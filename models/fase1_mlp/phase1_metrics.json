@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-25T13:23:57.548014Z",
+  "timestamp": "2026-03-25T14:13:03.184838Z",
   "dataset_path": "../processed/fase1/phase1_dataset_municipio_fecha.csv",
   "dataset_shape": [
     341787,
@@ -185,6 +185,25 @@
           [
             193,
             2
+          ]
+        ]
+      },
+      "test_best_threshold": 0.7999999999999999,
+      "test_at_best_threshold": {
+        "accuracy": 0.9787246433077744,
+        "precision": 0.0011074197120708748,
+        "recall": 0.005128205128205128,
+        "f1": 0.0018214936247723133,
+        "support": 51515,
+        "roc_auc": 0.5693188540480045,
+        "confusion_matrix": [
+          [
+            50418,
+            902
+          ],
+          [
+            194,
+            1
           ]
         ]
       }
