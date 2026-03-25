@@ -1,0 +1,13 @@
+# Heavy raw data
+raw/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Notebook cache
+.ipynb_checkpoints/
+
+# Local virtual envs
+.venv/
+venv/

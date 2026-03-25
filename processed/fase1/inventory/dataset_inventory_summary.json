@@ -1,0 +1,124 @@
+{
+  "scan_timestamp": "2026-03-25T08:25:34.664606",
+  "root": "C:\\Users\\Pc\\Downloads\\PROYECTO ANTIOQUIA\\raw",
+  "total_files": 3070,
+  "extension_counts": {
+    "csv": 6,
+    "geojson": 11,
+    "gz": 1,
+    "tif": 31,
+    "tif.gz": 2981,
+    "txt": 3,
+    "untracked": 15,
+    "xlsx": 3,
+    "zip": 19
+  },
+  "source_group_counts": {
+    "CHIRPS": 2983,
+    "DATOS_COMPRIMIDOS": 1,
+    "DHIME_NIVEL_IDEAM": 8,
+    "ESTACIONES_IDEAM": 3,
+    "GROUND_TRUTH_INUNDACIONES": 15,
+    "IGAC_TOPO_CARTO": 3,
+    "MAPBIOMAS": 8,
+    "OPEN_METEO": 4,
+    "PRECIPITACION_IDEAM": 5,
+    "SENTINEL1_GEE": 24,
+    "SMAP_SUELO": 7,
+    "TR_CENTROS_POBLADOS": 8,
+    "UNKNOWN": 1
+  },
+  "phase_counts": {
+    "IGNORE_FOR_NOW": 16,
+    "NEEDS_HEAVY_GEOSPATIAL_PREPROCESSING": 1,
+    "NEEDS_LIGHT_PREPROCESSING": 36,
+    "READY_FOR_PHASE1": 5,
+    "TOO_HEAVY_FOR_PHASE1_NOTEBOOK": 3012
+  },
+  "source_group_phase1_rationale": {
+    "UNKNOWN": {
+      "file_count": 1,
+      "default_phase": "IGNORE_FOR_NOW",
+      "phase1_reason": "Fuente no identificada automaticamente; revisar manualmente si aporta a tabla municipio-fecha.",
+      "can_convert_to_municipio_fecha": false
+    },
+    "CHIRPS": {
+      "file_count": 2983,
+      "default_phase": "TOO_HEAVY_FOR_PHASE1_NOTEBOOK",
+      "phase1_reason": "Rasters diarios masivos; util para features de lluvia, pero conviene preagregar fuera de notebook a tabla municipio-fecha.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "MAPBIOMAS": {
+      "file_count": 8,
+      "default_phase": "NEEDS_HEAVY_GEOSPATIAL_PREPROCESSING",
+      "phase1_reason": "Cobertura del suelo aporta variables de susceptibilidad, pero requiere agregacion espacial por municipio (y eventualmente por anio).",
+      "can_convert_to_municipio_fecha": true
+    },
+    "DHIME_NIVEL_IDEAM": {
+      "file_count": 8,
+      "default_phase": "NEEDS_LIGHT_PREPROCESSING",
+      "phase1_reason": "Niveles hidrologicos de IDEAM son utiles para predictor auxiliar; requieren limpieza temporal y consolidacion por area/municipio.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "ESTACIONES_IDEAM": {
+      "file_count": 3,
+      "default_phase": "NEEDS_LIGHT_PREPROCESSING",
+      "phase1_reason": "Metadatos y/o series de estaciones IDEAM; requieren unificacion de codigos, georreferenciacion y agregacion espacial.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "GROUND_TRUTH_INUNDACIONES": {
+      "file_count": 15,
+      "default_phase": "READY_FOR_PHASE1",
+      "phase1_reason": "Fuente candidata para variable objetivo (ocurrencia de inundacion), prioritaria para construir etiqueta binaria.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "OPEN_METEO": {
+      "file_count": 4,
+      "default_phase": "NEEDS_LIGHT_PREPROCESSING",
+      "phase1_reason": "Datos meteorologicos tabulares suelen ser utiles para MLP, con mapeo a municipios y estandarizacion temporal.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "PRECIPITACION_IDEAM": {
+      "file_count": 5,
+      "default_phase": "NEEDS_LIGHT_PREPROCESSING",
+      "phase1_reason": "Series de precipitacion son valiosas para MLP, pero requieren limpieza y agregacion a municipio-fecha.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "DATOS_COMPRIMIDOS": {
+      "file_count": 1,
+      "default_phase": "IGNORE_FOR_NOW",
+      "phase1_reason": "Contenedor de archivos comprimidos (posibles duplicados o staging). Conviene priorizar datos ya extraidos para Fase 1.",
+      "can_convert_to_municipio_fecha": false
+    },
+    "SMAP_SUELO": {
+      "file_count": 7,
+      "default_phase": "NEEDS_HEAVY_GEOSPATIAL_PREPROCESSING",
+      "phase1_reason": "Humedad del suelo es util para inundaciones, pero suele venir en grillas o formatos pesados que requieren agregacion espacial/temporal.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "IGAC_TOPO_CARTO": {
+      "file_count": 3,
+      "default_phase": "NEEDS_HEAVY_GEOSPATIAL_PREPROCESSING",
+      "phase1_reason": "Topografia/cartografia es clave como covariable estatica, pero requiere procesamiento geoespacial (zonal stats) para volverlo tabular.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "TR_CENTROS_POBLADOS": {
+      "file_count": 8,
+      "default_phase": "NEEDS_LIGHT_PREPROCESSING",
+      "phase1_reason": "Capas de centros poblados sirven para exposicion/vulnerabilidad; normalmente necesitan joins espaciales y agregados simples.",
+      "can_convert_to_municipio_fecha": true
+    },
+    "SENTINEL1_GEE": {
+      "file_count": 24,
+      "default_phase": "NEEDS_HEAVY_GEOSPATIAL_PREPROCESSING",
+      "phase1_reason": "SAR aporta senales hidricas valiosas, pero requiere pipeline geoespacial y temporal para extraer estadisticos tabulares.",
+      "can_convert_to_municipio_fecha": true
+    }
+  },
+  "libraries": {
+    "pandas": true,
+    "geopandas": false,
+    "rasterio": false
+  },
+  "scan_errors": []
+}

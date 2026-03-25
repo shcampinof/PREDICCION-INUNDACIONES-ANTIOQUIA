@@ -1,0 +1,199 @@
+{
+  "timestamp": "2026-03-25T13:23:57.548014Z",
+  "dataset_path": "../processed/fase1/phase1_dataset_municipio_fecha.csv",
+  "dataset_shape": [
+    341787,
+    52
+  ],
+  "target_positive_rate": 0.0038093900587207823,
+  "excluded_columns": [
+    "date",
+    "flood_next_24h",
+    "municipio_key",
+    "municipio_name"
+  ],
+  "usable_feature_columns": [
+    "stations_in_municipio",
+    "latitud_raw",
+    "longitud_raw",
+    "altitud_raw",
+    "meteo_obs_count_24h",
+    "meteo_station_count_24h",
+    "meteo_temp_mean_24h",
+    "meteo_temp_max_24h",
+    "meteo_rh_mean_24h",
+    "meteo_rh_max_24h",
+    "meteo_wind_mean_24h",
+    "meteo_wind_max_24h",
+    "precip_mm_24h_sum",
+    "precip_mm_24h_max",
+    "precip_obs_count_24h",
+    "precip_mm_48h_sum",
+    "precip_mm_72h_sum",
+    "year",
+    "month",
+    "day",
+    "day_of_year",
+    "day_of_week",
+    "is_weekend",
+    "stations_in_municipio_missing",
+    "latitud_raw_missing",
+    "longitud_raw_missing",
+    "altitud_raw_missing",
+    "meteo_obs_count_24h_missing",
+    "meteo_station_count_24h_missing",
+    "meteo_temp_mean_24h_missing",
+    "meteo_temp_max_24h_missing",
+    "meteo_rh_mean_24h_missing",
+    "meteo_rh_max_24h_missing",
+    "meteo_wind_mean_24h_missing",
+    "meteo_wind_max_24h_missing",
+    "precip_mm_24h_sum_missing",
+    "precip_mm_24h_max_missing",
+    "precip_obs_count_24h_missing",
+    "precip_station_count_24h_missing",
+    "precip_mm_48h_sum_missing",
+    "precip_mm_72h_sum_missing"
+  ],
+  "n_features": 41,
+  "split": {
+    "train_dates": [
+      "2018-01-01",
+      "2022-11-24"
+    ],
+    "validation_dates": [
+      "2022-11-25",
+      "2023-12-13"
+    ],
+    "test_dates": [
+      "2023-12-14",
+      "2024-12-31"
+    ],
+    "train_rows": 239032,
+    "validation_rows": 51240,
+    "test_rows": 51515
+  },
+  "models": {
+    "logistic_regression": {
+      "class_weight": "balanced",
+      "train": {
+        "accuracy": 0.6772691522473978,
+        "precision": 0.009343144709202675,
+        "recall": 0.7279116465863453,
+        "f1": 0.01844948023360859,
+        "support": 239032,
+        "roc_auc": 0.7662747057733024,
+        "confusion_matrix": [
+          [
+            161164,
+            76872
+          ],
+          [
+            271,
+            725
+          ]
+        ]
+      },
+      "validation": {
+        "accuracy": 0.27047228727556594,
+        "precision": 0.0026422547240311733,
+        "recall": 0.8918918918918919,
+        "f1": 0.005268900183613188,
+        "support": 51240,
+        "roc_auc": 0.6456382451805792,
+        "confusion_matrix": [
+          [
+            13760,
+            37369
+          ],
+          [
+            12,
+            99
+          ]
+        ]
+      },
+      "test": {
+        "accuracy": 0.1868776084635543,
+        "precision": 0.004421728277665518,
+        "recall": 0.9538461538461539,
+        "f1": 0.008802650260293421,
+        "support": 51515,
+        "roc_auc": 0.6934575913823771,
+        "confusion_matrix": [
+          [
+            9441,
+            41879
+          ],
+          [
+            9,
+            186
+          ]
+        ]
+      }
+    },
+    "mlp": {
+      "oversampling_used": true,
+      "train_size_after_sampling": 476072,
+      "train": {
+        "accuracy": 0.9858805515579504,
+        "precision": 0.22761621250286238,
+        "recall": 0.9979919678714859,
+        "f1": 0.37068804773447694,
+        "support": 239032,
+        "roc_auc": 0.9967413787128551,
+        "confusion_matrix": [
+          [
+            234663,
+            3373
+          ],
+          [
+            2,
+            994
+          ]
+        ]
+      },
+      "validation": {
+        "accuracy": 0.9663544106167057,
+        "precision": 0.0030807147258163892,
+        "recall": 0.04504504504504504,
+        "f1": 0.0057670126874279125,
+        "support": 51240,
+        "roc_auc": 0.5726113369133964,
+        "confusion_matrix": [
+          [
+            49511,
+            1618
+          ],
+          [
+            106,
+            5
+          ]
+        ]
+      },
+      "test": {
+        "accuracy": 0.9715228574201689,
+        "precision": 0.001567398119122257,
+        "recall": 0.010256410256410256,
+        "f1": 0.002719238613188307,
+        "support": 51515,
+        "roc_auc": 0.5693188540480045,
+        "confusion_matrix": [
+          [
+            50046,
+            1274
+          ],
+          [
+            193,
+            2
+          ]
+        ]
+      }
+    }
+  },
+  "artifacts": {
+    "baseline_model": "../models/fase1_mlp\\baseline_logistic_regression.joblib",
+    "mlp_model": "../models/fase1_mlp\\mlp_classifier_phase1.joblib",
+    "scaler": "../models/fase1_mlp\\standard_scaler.joblib",
+    "imputer": "../models/fase1_mlp\\median_imputer.joblib"
+  }
+}
