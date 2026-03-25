@@ -1,4 +1,4 @@
-# Predicci?n de Inundaciones en Antioquia
+# Predicción de Inundaciones en Antioquia
 
 Proyecto de Redes Neuronales con foco actual en **Fase 1** (modelo superficial tabular para clasificaci?n binaria `flood_next_24h`).
 
